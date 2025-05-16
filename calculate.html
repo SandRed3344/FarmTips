@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-group div {
+            margin-right: 10px;
+        }
+
+        .form-group input[type="number"] {
+            font-size: 18px;
+            padding: 5px;
+            width: 200px;
+            text-align: right;
+        }
+
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .content button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .content button:hover {
+            background-color: #555;
+        }
+
+        #back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's website</div>
+    </div>
+    <div id="marquee">
+        ****** Hey HI !! Welcome to the world of farming and agro ******
+    </div>
+
+    <div class="content">
+        <h2 id="selected-info"></h2>
+        <div class="form-group">
+            <div>Enter your quantity:</div>
+            <input type="number" id="quantity" min="1">
+        </div>
+        <div class="form-group">
+            <div>Today's Price:</div>
+            <input type="number" id="price" step="0.01" min="0">
+        </div>
+        <div class="form-group">
+            <div>Enter the distance from origin to destination:</div>
+            <input type="number" id="distance" min="1">
+        </div>
+        <div class="form-group result">
+            <div>Transportation Cost:</div>
+            <div id="transportation">₹0</div>
+        </div>
+        <div class="form-group result">
+            <div>Final Income:</div>
+            <div id="income">₹0</div>
+        </div>
+        <button onclick="calculate()">Calculate</button>
+    </div>
+
+    <button id="back-button" onclick="location.href='calci.html'">Back</button>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                origin: params.get('origin'),
+                destination: params.get('destination')
+            };
+        }
+
+        // Function to update content based on selected origin and destination
+        function updateContent() {
+            const { origin, destination } = getQueryParams();
+            const selectedInfo = `Selected Origin: ${origin} | Selected Destination: ${destination}`;
+            document.getElementById('selected-info').textContent = selectedInfo;
+        }
+
+        // Function to perform the calculation
+        function calculate() {
+            const quantity = parseFloat(document.getElementById('quantity').value);
+            const price = parseFloat(document.getElementById('price').value);
+            const distance = parseFloat(document.getElementById('distance').value);
+
+            if (isNaN(quantity) || isNaN(price) || isNaN(distance) || quantity <= 0 || price <= 0 || distance <= 0) {
+                alert('Please enter valid values for quantity, price, and distance.');
+                return;
+            }
+
+            const transportationCost = distance * 78;
+            const finalIncome = (quantity * price) - transportationCost;
+
+            document.getElementById('transportation').textContent = `₹${transportationCost.toFixed(2)}`;
+            document.getElementById('income').textContent = `₹${finalIncome.toFixed(2)}`;
+        }
+
+        // Update content when the page loads
+        window.onload = updateContent;
+    </script>
+</body>
+</html>

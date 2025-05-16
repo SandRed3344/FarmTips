@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tractor Drivers - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #search-bar {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .profile-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .profile-card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+        .profile-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        #back {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #FF006E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back:hover {
+            background-color: #FB5607;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's Website</div>
+    </div>
+    <div id="marquee">
+        <marquee>****** NAMASTE !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+    <h1 style="font-weight: bold; text-align: center;">MEN WORKERS</h1>
+    <div class="container">
+        <input type="text" id="search-bar" placeholder="Search for a Men Workers..." onkeyup="filterProfiles()">
+        
+        <div class="profile-card">
+            <img src="driver1.jpg" alt="worker 1">
+            <h3>John Doe</h3>
+            <p>Location: Village A</p>
+            <p>Phone: +91-9876543210</p>
+            <p>Experience: 5 years</p>
+            <p>Charges: ₹500/day</p>
+        </div>
+        <div class="profile-card">
+            <img src="driver2.jpg" alt="worker 2">
+            <h3>Jane Smith</h3>
+            <p>Location: Village B</p>
+            <p>Phone: +91-8765432109</p>
+            <p>Experience: 3 years</p>
+            <p>Charges: ₹450/day</p>
+        </div>
+        <div class="profile-card">
+            <img src="driver3.jpg" alt="worker 3">
+            <h3>Michael Johnson</h3>
+            <p>Location: Village C</p>
+            <p>Phone: +91-7654321098</p>
+            <p>Experience: 4 years</p>
+            <p>Charges: ₹480/day</p>
+        </div>
+        <div class="profile-card">
+            <img src="driver4.jpg" alt="worker 4">
+            <h3>Emily Davis</h3>
+            <p>Location: Village D</p>
+            <p>Phone: +91-6543210987</p>
+            <p>Experience: 6 years</p>
+            <p>Charges: ₹520/day</p>
+        </div>
+        <div class="profile-card">
+            <img src="driver5.jpg" alt="worker 5">
+            <h3>Robert Brown</h3>
+            <p>Location: Village E</p>
+            <p>Phone: +91-5432109876</p>
+            <p>Experience: 2 years</p>
+            <p>Charges: ₹400/day</p>
+        </div>
+    </div>
+    <button id="back" onclick="location.href='hirelabour.html'">Back</button>
+
+    <script>
+        function filterProfiles() {
+            const searchInput = document.getElementById('search-bar').value.toLowerCase();
+            const profiles = document.getElementsByClassName('profile-card');
+
+            for (let i = 0; i < profiles.length; i++) {
+                const profile = profiles[i];
+                const name = profile.getElementsByTagName('h3')[0].innerText.toLowerCase();
+                const location = profile.getElementsByTagName('p')[0].innerText.toLowerCase();
+
+                if (name.includes(searchInput) || location.includes(searchInput)) {
+                    profile.style.display = '';
+                } else {
+                    profile.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

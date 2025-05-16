@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Products - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        #back {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #FF006E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back:hover {
+            background-color: #FB5607;
+        }
+        #go-to-cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #go-to-cart:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function addToCart(productName, productPrice) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: productName, price: productPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + " has been added to your cart!");
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's Website</div>
+    </div>
+    <div id="marquee">
+        <marquee>****** NAMASTE !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+    <div class="container">
+        <!-- Repeat for each product -->
+        <div class="product-card" onclick="addToCart('Product 1', 500)">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>Product 1</h3>
+        </div>
+        <div class="product-card" onclick="addToCart('Product 2', 700)">
+            <img src="product2.jpg" alt="Product 2">
+            <h3>Product 2</h3>
+        </div>
+        <div class="product-card" onclick="addToCart('Product 3', 900)">
+            <img src="product3.jpg" alt="Product 3">
+            <h3>Product 3</h3>
+        </div>
+        <div class="product-card" onclick="addToCart('Product 4', 1000)">
+            <img src="product4.jpg" alt="Product 4">
+            <h3>Product 4</h3>
+        </div>
+        <div class="product-card" onclick="addToCart('Product 5', 400)">
+            <img src="product5.jpg" alt="Product 5">
+            <h3>Product 5</h3>
+        </div>
+        <!-- Add more product cards as needed -->
+    </div>
+    <button id="back" onclick="location.href='agristore.html'">Back</button>
+    <button id="go-to-cart" onclick="location.href='cart.html'">Go to Cart</button>
+</body>
+</html>

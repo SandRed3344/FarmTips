@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Chatbot</title>
+    <style>
+        /* CSS for the chatbot logo and window */
+        .chatbot-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #chatbotIcon {
+            width: 50px; /* Adjust size as needed */
+            cursor: pointer;
+        }
+
+        .chatbot-window {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            border-radius: 8px;
+        }
+
+        #chatbotContent {
+            padding: 10px;
+            overflow-y: auto;
+            height: 90%;
+        }
+
+        #userInput {
+            width: 80%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chatbot Logo -->
+    <div class="chatbot-logo">
+        <img src="your_logo_path_here.png" alt="Chatbot Logo" id="chatbotIcon">
+    </div>
+
+    <!-- Chatbot Window -->
+    <div id="chatbotWindow" class="chatbot-window">
+        <div id="chatbotContent">
+            <!-- Initial greeting or instructions -->
+            <p>Welcome! I'm here to help with your agricultural questions.</p>
+        </div>
+        <div>
+            <input type="text" id="userInput" placeholder="Ask me anything about farming...">
+            <button onclick="processInput()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to toggle the chatbot window
+        document.getElementById("chatbotIcon").onclick = function() {
+            var chatbot = document.getElementById("chatbotWindow");
+            if (chatbot.style.display === "none" || chatbot.style.display === "") {
+                chatbot.style.display = "block";
+            } else {
+                chatbot.style.display = "none";
+            }
+        };
+
+        // Function to process user input and provide a response
+        function processInput() {
+            var input = document.getElementById("userInput").value;
+            var output = "I'm here to help with agricultural queries!";
+
+            // Simple response logic
+            if (input.toLowerCase().includes("crop")) {
+                output = "You can grow crops like corn, wheat, and rice.";
+            } else if (input.toLowerCase().includes("fertilizer")) {
+                output = "For loamy soil, a balanced fertilizer like NPK 10-10-10 is often effective.";
+            } else if (input.toLowerCase().includes("pest")) {
+                output = "For pest control, consider using organic pesticides like neem oil.";
+            }
+
+            // Display the user's question and the bot's response
+            document.getElementById("chatbotContent").innerHTML += "<p><strong>User:</strong> " + input + "</p>";
+            document.getElementById("chatbotContent").innerHTML += "<p><strong>Bot:</strong> " + output + "</p>";
+
+            // Clear the input field
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+</body>
+</html>

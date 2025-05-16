@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .cart-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .cart-item h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+        .cart-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .cart-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .remove-button {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #FF006E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cart-item:hover .remove-button {
+            display: block;
+        }
+        .total {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px 0;
+        }
+        .payment-options img {
+            width: 150px;
+            height: 50px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        #back, #get-back {
+            position: fixed;
+            bottom: 20px;
+            background-color: #FF006E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back:hover, #get-back:hover {
+            background-color: #FB5607;
+        }
+        #get-back {
+            right: 80px; /* Adjust position to avoid overlap with 'Back' button */
+        }
+    </style>
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartContainer = document.getElementById('cart-items');
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                let itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>Price: ₹${item.price}</p>
+                    <button class="remove-button" onclick="removeItem(${index})">Remove</button>
+                `;
+                cartContainer.appendChild(itemElement);
+                total += item.price;
+            });
+
+            document.getElementById('total').innerText = `Total: ₹${total}`;
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.reload();
+        }
+
+        function goBack() {
+            let previousPage = localStorage.getItem('previousPage') || 'servicespage.html';
+            location.href = previousPage;
+        }
+
+        window.onload = function() {
+            loadCart();
+            localStorage.setItem('previousPage', document.referrer);
+        };
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's Website</div>
+    </div>
+    <div id="marquee">
+        <marquee>****** NAMASTE !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+    <div class="container" id="cart-items">
+        <!-- Cart items will be dynamically loaded here -->
+    </div>
+    <div class="total" id="total">Total: ₹0</div>
+    <div class="payment-options">
+        <a href="https://www.phonepe.com"><img src="phonepaylogo.png" alt="PhonePe"></a>
+        <a href="https://pay.google.com"><img src="gpaylogo.jpg" alt="Google Pay"></a>
+    </div>
+    <button id="back" onclick="location.href='servicespage.html'">Back</button>
+    <button id="get-back" onclick="goBack()">Get Back</button>
+</body>
+</html>

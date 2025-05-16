@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Markets</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .variety {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .variety:hover {
+            transform: scale(1.05);
+        }
+
+        #back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's website</div>
+    </div>
+    <div id="marquee">
+        ****** Hey HI !! Welcome to the world of farming and agro ******
+    </div>
+    
+    <div class="container">
+        <div class="variety" onclick="navigateToCalci('Chilli')">Chilli - Today's Price: ₹<span id="price-chilli"></span></div>
+        <div class="variety" onclick="navigateToCalci('Silk')">Silk - Today's Price: ₹<span id="price-silk"></span></div>
+        <div class="variety" onclick="navigateToCalci('Tomato')">Tomato - Today's Price: ₹<span id="price-tomato"></span></div>
+        <div class="variety" onclick="navigateToCalci('Cauliflower')">Cauliflower - Today's Price: ₹<span id="price-cauliflower"></span></div>
+        <div class="variety" onclick="navigateToCalci('Beans')">Beans - Today's Price: ₹<span id="price-beans"></span></div>
+        <div class="variety" onclick="navigateToCalci('Paddy')">Paddy - Today's Price: ₹<span id="price-paddy"></span></div>
+        <div class="variety" onclick="navigateToCalci('Ladies Finger')">Ladies Finger - Today's Price: ₹<span id="price-ladiesfinger"></span></div>
+        <div class="variety" onclick="navigateToCalci('X Veg')">X Veg - Today's Price: ₹<span id="price-xveg"></span></div>
+        <div class="variety" onclick="navigateToCalci('Chilli')">Chilli - Today's Price: ₹<span id="price-chilli"></span></div>
+        <div class="variety" onclick="navigateToCalci('Silk')">Silk - Today's Price: ₹<span id="price-silk"></span></div>
+        <div class="variety" onclick="navigateToCalci('Tomato')">Tomato - Today's Price: ₹<span id="price-tomato"></span></div>
+        <div class="variety" onclick="navigateToCalci('Cauliflower')">Cauliflower - Today's Price: ₹<span id="price-cauliflower"></span></div>
+        <div class="variety" onclick="navigateToCalci('Beans')">Beans - Today's Price: ₹<span id="price-beans"></span></div>
+        <div class="variety" onclick="navigateToCalci('Paddy')">Paddy - Today's Price: ₹<span id="price-paddy"></span></div>
+        <div class="variety" onclick="navigateToCalci('Ladies Finger')">Ladies Finger - Today's Price: ₹<span id="price-ladiesfinger"></span></div>
+        <div class="variety" onclick="navigateToCalci('X Veg')">X Veg - Today's Price: ₹<span id="price-xveg"></span></div>
+        <div class="variety" onclick="navigateToCalci('Chilli')">Chilli - Today's Price: ₹<span id="price-chilli"></span></div>
+        <div class="variety" onclick="navigateToCalci('Silk')">Silk - Today's Price: ₹<span id="price-silk"></span></div>
+        <div class="variety" onclick="navigateToCalci('Tomato')">Tomato - Today's Price: ₹<span id="price-tomato"></span></div>
+        <div class="variety" onclick="navigateToCalci('Cauliflower')">Cauliflower - Today's Price: ₹<span id="price-cauliflower"></span></div>
+        <div class="variety" onclick="navigateToCalci('Beans')">Beans - Today's Price: ₹<span id="price-beans"></span></div>
+        <div class="variety" onclick="navigateToCalci('Paddy')">Paddy - Today's Price: ₹<span id="price-paddy"></span></div>
+        <div class="variety" onclick="navigateToCalci('Ladies Finger')">Ladies Finger - Today's Price: ₹<span id="price-ladiesfinger"></span></div>
+        <div class="variety" onclick="navigateToCalci('X Veg')">X Veg - Today's Price: ₹<span id="price-xveg"></span></div>
+    </div>
+    
+    <button id="back-button" onclick="location.href='servicespage.html'">Back</button>
+
+    <script>
+        // Function to generate a random price and display it
+        function generatePrice() {
+            const prices = {
+                chilli: Math.floor(Math.random() * 900) + 100,
+                silk: Math.floor(Math.random() * 900) + 100,
+                tomato: Math.floor(Math.random() * 900) + 100,
+                cauliflower: Math.floor(Math.random() * 900) + 100,
+                beans: Math.floor(Math.random() * 900) + 100,
+                paddy: Math.floor(Math.random() * 900) + 100,
+                ladiesfinger: Math.floor(Math.random() * 900) + 100,
+                xveg: Math.floor(Math.random() * 900) + 100
+            };
+
+            document.getElementById('price-chilli').textContent = prices.chilli;
+            document.getElementById('price-silk').textContent = prices.silk;
+            document.getElementById('price-tomato').textContent = prices.tomato;
+            document.getElementById('price-cauliflower').textContent = prices.cauliflower;
+            document.getElementById('price-beans').textContent = prices.beans;
+            document.getElementById('price-paddy').textContent = prices.paddy;
+            document.getElementById('price-ladiesfinger').textContent = prices.ladiesfinger;
+            document.getElementById('price-xveg').textContent = prices.xveg;
+
+            return prices;
+        }
+
+        // Function to navigate to calci.html with the selected variety and price
+        function navigateToCalci(variety) {
+            const prices = generatePrice();
+            const selectedPrice = prices[variety.toLowerCase().replace(/\s+/g, '')];
+            const url = `calci.html?variety=${variety}&price=${selectedPrice}`;
+            window.location.href = url;
+        }
+
+        // Generate prices when the page loads
+        window.onload = generatePrice;
+    </script>
+</body>
+</html>

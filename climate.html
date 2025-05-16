@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: white;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #FFBE0B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        #welcome-message {
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+        }
+        #lets-go-button {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: #FFBE0B;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+        #lets-go-button:hover {
+            background-color: #FB5607;
+        }
+        #signout {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #e63946;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+        #signout:hover {
+            background-color: #d62828;
+        }
+        #back-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back-btn:hover {
+            background-color: #004d40;
+        }
+        #weather-section {
+            margin-top: 100px; /* Ensure space for the fixed elements */
+        }
+        #weather-info {
+            font-size: 1.5rem;
+            margin: 2rem;
+        }
+        #alert {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's Website</div>
+    </div>
+    <div id="marquee">
+        <marquee behavior="scroll" direction="left">****** Hey HI !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+    <div id="welcome-message">
+        Welcome <span id="username"></span>! Please click on <strong>Let's Go</strong> to get into your world of agriculture.
+    </div>
+
+    <button id="back-btn" onclick="window.location.href='servicespage.html'">Back</button>
+
+    <div id="weather-section">
+        <h1>Current Weather Conditions</h1>
+        <div id="weather-info">
+            <p id="condition">Condition: Loading...</p>
+            <p id="temperature">Temperature: Loading...</p>
+        </div>
+        <div id="alert"></div>
+    </div>
+</body>
+</html>

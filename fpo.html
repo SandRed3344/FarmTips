@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPO - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        #search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #search-input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        #pdf-viewer {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        #back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back-button:hover {
+            background-color: #FB5607;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.6.172/pdf.min.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div style="display: flex; align-items: center;">
+            <img id="logo" src="logo.jpg" alt="Logo">
+            <div id="app-name">Sandeep's Website</div>
+        </div>
+    </div>
+    <div id="marquee">
+        <marquee>****** Hey HI !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search in the PDF...">
+    </div>
+
+    <div id="pdf-viewer">
+        <canvas id="pdf-canvas"></canvas>
+    </div>
+
+    <button id="back-button" onclick="location.href='servicespage.html'">Back</button>
+
+    <script>
+        const url = 'fpo.pdf'; // Replace with your PDF file path
+
+        // Initialize PDF.js
+        pdfjsLib.getDocument(url).promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale });
+
+                const canvas = document.getElementById('pdf-canvas');
+                const context = canvas.getContext('2d');
+
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: context,
+                    viewport
+                };
+                page.render(renderContext);
+
+                // Add search functionality
+                document.getElementById('search-input').addEventListener('input', function() {
+                    const query = this.value.toLowerCase();
+                    page.getTextContent().then(textContent => {
+                        const textItems = textContent.items;
+                        let found = false;
+                        for (let item of textItems) {
+                            if (item.str.toLowerCase().includes(query)) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found) {
+                            canvas.style.border = '2px solid green'; // Highlight when found
+                        } else {
+                            canvas.style.border = '2px solid red'; // Indicate not found
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

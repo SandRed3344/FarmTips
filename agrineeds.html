@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrineeds - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .paragraphs {
+            margin: 20px 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        #back, #go-to-cart {
+            position: fixed;
+            background-color: #FF006E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back {
+            bottom: 20px;
+            left: 20px;
+        }
+        #go-to-cart {
+            bottom: 20px;
+            right: 20px;
+        }
+        #back:hover, #go-to-cart:hover {
+            background-color: #FB5607;
+        }
+    </style>
+    <script>
+        function addToCart(productName, productPrice) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: productName, price: productPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + " has been added to your cart!");
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's Website</div>
+    </div>
+    <div id="marquee">
+        <marquee>****** NAMASTE !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+    <div class="container">
+        <h1>AGRINEEDS</h1>
+        <div class="paragraphs">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Vestibulum vehicula justo vel nunc ultricies, eu dignissim mi fermentum.</p>
+            <p>Suspendisse potenti. Donec ac ligula sed felis vestibulum aliquam.</p>
+            <p>Nam id metus cursus, vehicula sem nec, cursus nulla.</p>
+            <p>Phasellus dictum tortor a neque gravida, a pharetra risus fermentum.</p>
+            <p>Nulla facilisi. Donec in tortor eu est egestas dapibus.</p>
+            <p>Maecenas malesuada dui sed nisi luctus, eget cursus lorem tristique.</p>
+            <p>Aliquam erat volutpat. Suspendisse imperdiet augue non arcu convallis.</p>
+            <p>Morbi dictum turpis at arcu venenatis convallis.</p>
+            <p>Sed consequat nisl nec risus venenatis, id interdum tortor bibendum.</p>
+        </div>
+        <div class="products">
+            <div class="product-card" onclick="addToCart('olx.product1', 500)">
+                <img src="product1.jpg" alt="olx.product1">
+                <h3>olx.product1</h3>
+                <p>₹500</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product2', 600)">
+                <img src="product2.jpg" alt="olx.product2">
+                <h3>olx.product2</h3>
+                <p>₹600</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product3', 700)">
+                <img src="product3.jpg" alt="olx.product3">
+                <h3>olx.product3</h3>
+                <p>₹700</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product4', 800)">
+                <img src="product4.jpg" alt="olx.product4">
+                <h3>olx.product4</h3>
+                <p>₹800</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product5', 900)">
+                <img src="product5.jpg" alt="olx.product5">
+                <h3>olx.product5</h3>
+                <p>₹900</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product6', 1000)">
+                <img src="product6.jpg" alt="olx.product6">
+                <h3>olx.product6</h3>
+                <p>₹1000</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product7', 1100)">
+                <img src="product7.jpg" alt="olx.product7">
+                <h3>olx.product7</h3>
+                <p>₹1100</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product8', 1200)">
+                <img src="product8.jpg" alt="olx.product8">
+                <h3>olx.product8</h3>
+                <p>₹1200</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product9', 1300)">
+                <img src="product9.jpg" alt="olx.product9">
+                <h3>olx.product9</h3>
+                <p>₹1300</p>
+            </div>
+            <div class="product-card" onclick="addToCart('olx.product10', 1400)">
+                <img src="product10.jpg" alt="olx.product10">
+                <h3>olx.product10</h3>
+                <p>₹1400</p>
+            </div>
+        </div>
+    </div>
+    <button id="back" onclick="location.href='servicespage.html'">Back</button>
+    <button id="go-to-cart" onclick="location.href='cart.html'">Go to Cart</button>
+</body>
+</html>

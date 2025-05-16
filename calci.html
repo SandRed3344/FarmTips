@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Route</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            height: calc(100vh - 150px); /* Subtract header and marquee height */
+            align-items: center;
+        }
+
+        .dropdown {
+            width: 45%;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #calculate-button {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #calculate-button:hover {
+            background-color: #555;
+        }
+
+        #back-button {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's website</div>
+    </div>
+    <div id="marquee">
+        ****** Hey HI !! Welcome to the world of farming and agro ******
+    </div>
+    
+    <div class="container">
+        <div class="dropdown">
+            <label for="origin">Select your origin:</label>
+            <select id="origin" onchange="checkSelection()">
+                <option value="">--Select--</option>
+                <option value="Palamaner">Palamaner</option>
+                <option value="Chittoor">Chittoor</option>
+                <option value="Madanapalli">Madanapalli</option>
+                <option value="Guntur">Guntur</option>
+                <option value="Mulbagal">Mulbagal</option>
+                <option value="Kolar">Kolar</option>
+                <option value="Anantapur">Anantapur</option>
+                <option value="Kadiri">Kadiri</option>
+                <option value="Tirupati">Tirupati</option>
+                <option value="Nellore">Nellore</option>
+            </select>
+        </div>
+
+        <div class="dropdown">
+            <label for="destination">Select your destination:</label>
+            <select id="destination" onchange="checkSelection()">
+                <option value="">--Select--</option>
+                <option value="Palamaner">Palamaner</option>
+                <option value="Chittoor">Chittoor</option>
+                <option value="Madanapalli">Madanapalli</option>
+                <option value="Guntur">Guntur</option>
+                <option value="Mulbagal">Mulbagal</option>
+                <option value="Kolar">Kolar</option>
+                <option value="Anantapur">Anantapur</option>
+                <option value="Kadiri">Kadiri</option>
+                <option value="Tirupati">Tirupati</option>
+                <option value="Nellore">Nellore</option>
+            </select>
+        </div>
+    </div>
+
+    <button id="calculate-button" onclick="calculateRoute()">Calculate</button>
+    <button id="back-button" onclick="location.href='hotmarkets.html'">Back</button>
+
+    <script>
+        function checkSelection() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const calculateButton = document.getElementById('calculate-button');
+
+            if (origin && destination) {
+                if (origin === destination) {
+                    alert("Origin and destination can't be the same");
+                    calculateButton.style.display = 'none';
+                } else {
+                    calculateButton.style.display = 'block';
+                }
+            } else {
+                calculateButton.style.display = 'none';
+            }
+        }
+
+        function calculateRoute() {
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+
+            if (origin && destination && origin !== destination) {
+                // Pass selected product to calculate.html
+                location.href = `calculate.html?product=${encodeURIComponent(destination)}`;
+            }
+        }
+    </script>
+</body>
+</html>

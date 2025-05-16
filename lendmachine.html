@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Labour - Sandeep's Website</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: whitesmoke;
+            position: relative;
+        }
+        #logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        #app-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+        }
+        #marquee {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+            height: calc(100vh - 180px); /* Adjust height considering header and marquee */
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .card img {
+            width: 100px; /* Fixed width */
+            height: 100px; /* Fixed height */
+            object-fit: cover;
+            opacity: 0.7; /* Increase transparency */
+        }
+        .card h3 {
+            margin: 10px 0 0;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        #back {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #FF006E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #back:hover {
+            background-color: #FB5607;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="logo.jpg" alt="Logo">
+        <div id="app-name">Sandeep's Website</div>
+    </div>
+    <div id="marquee">
+        <marquee>****** NAMASTE !! Welcome to the world of farming and agro ******</marquee>
+    </div>
+    <div class="container">
+        <div class="card" onclick="location.href='tractors.html'">
+            <img src="tractors.jpg" alt="Tractors">
+            <h3>Tractors</h3>
+        </div>
+        <div class="card" onclick="location.href='trailors.html'">
+            <img src="trailors.jpg" alt="trailors">
+            <h3>Trailors</h3>
+        </div>
+        <div class="card" onclick="location.href='ploughers.html'">
+            <img src="ploughers.jpg" alt="ploughers">
+            <h3>Ploughers</h3>
+        </div>
+        <div class="card" onclick="location.href='rotavators.html'">
+            <img src="rotavators.jpg" alt="rotavators">
+            <h3>Rotavators</h3>
+        </div>
+        <div class="card" onclick="location.href='sprayers.html'">
+            <img src="sprayers.png" alt="sprayers">
+            <h3>Sprayers</h3>
+        </div>
+        <div class="card" onclick="location.href='diggers.html'">
+            <img src="diggers.jpg" alt="diggers">
+            <h3>Diggers</h3>
+        </div>
+    </div>
+    <button id="back" onclick="location.href='servicespage.html'">Back</button>
+</body>
+</html>
